@@ -1,0 +1,45 @@
+
+<h1>List des publications </h1>
+
+<div id="publications">
+	<ul>
+		<li *ngFor="let pub of publications">
+			<div class="publication">
+				{{ pub.titre }}
+				<a [routerLink]="['/posts', pub.id]">Détail</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+
+<!-- Affiche le contenu du champ texte par interpolation -->
+<input type="text" #name> 
+{{ name.value }}
+
+<!-- Donne le focus champ de texte -->
+<input type="text" #name> 
+<button (click)="name.focus()">Focus the input</button>
+
+<!-- Déclencher la lacture de la vidéo -->
+<google-youtube #player></google-youtube>
+<button (click)="player.play()">Play!</button>
+
+
+<!-- Affiche les publications s'il y en a -->
+<ng-template [ngIf]="publications.length > 0">   
+	<div>
+		<h2>Publications</h2>
+	</div> 
+	 <ul>     
+	 	<!-- Liste toutes les publications en affichant le titre -->
+	 	<li *ngFor="let pub of publications">{{ pub.titre }}</li>   
+	 </ul> 
+</ng-template>
+
+<!-- Affiche des message en fonction du nombre d'élément -->
+<div [ngSwitch]="publications.length">   
+	<p *ngSwitchCase="0">Vous n'avez pas de publication</p>   
+	<p *ngSwitchCase="1">Vous avez une publication</p>   
+	<p *ngSwitchDefault>Vous avez plusieurs publications</p> 
+</div>
